@@ -43,11 +43,11 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        // start with an empty array varible 
+        // start with an empty array varible for the right rotation
         List<int> frontarray = new List<int>(data);
 
-        // using the slicing method getrange
-        // first get the new begining of the array by taking the amount from the end of the array
+        // using the slicing method GetRange
+        // first get the new begining of the array by taking the amount from the end of the data array
         frontarray = data.GetRange(data.Count - amount, amount);
         // remove the frontarray amount from data and then add it to the front
         data.RemoveRange(data.Count - amount, amount);
