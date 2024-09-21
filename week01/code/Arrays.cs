@@ -13,7 +13,20 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // start with an empty array variable 
+        double[] multiples = new double[length];
+
+        // Loop through the multipes array length amount of times
+        // to find multiples times number by i + 1
+        // increase the count 1 time in the loop
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i +1);
+
+        }
+
+        //return the results in the array
+        return multiples; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +42,16 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // start with an empty array varible 
+        List<int> frontarray = new List<int>(data);
+
+        // using the slicing method getrange
+        // first get the new begining of the array by taking the amount from the end of the array
+        frontarray = data.GetRange(data.Count - amount, amount);
+        // remove the frontarray amount from data and then add it to the front
+        data.RemoveRange(data.Count - amount, amount);
+        data.InsertRange(0, frontarray);
+
     }
 }
