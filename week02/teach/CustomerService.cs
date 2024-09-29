@@ -14,6 +14,11 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 1");
+        var service = new CustomerService(5);
+        service.AddNewCustomer();
+        service.ServeCustomer();
+
+
 
         // Defect(s) Found: 
 
@@ -23,12 +28,36 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 2");
+        service = new CustomerService(5);
+        service.AddNewCustomer();
+        service.AddNewCustomer();
+        Console.WriteLine($"Before serving customers: {service}");
+        service.ServeCustomer();
+        service.ServeCustomer();
+        Console.WriteLine($"After serving customers: {service}");
 
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
 
         // Add more Test Cases As Needed Below
+
+        // Test 3
+        // Scenario:
+        // Expected Results:
+        Console.WriteLine("Test 3");
+        service = new CustomerService(0);
+        service.ServeCustomer();
+
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
+
+        // Test 4
+        // Scenario:
+        // Expected Results
+
+
     }
 
     private readonly List<Customer> _queue = new();
@@ -45,7 +74,7 @@ public class CustomerService {
     /// Defines a Customer record for the service queue.
     /// This is an inner class.  Its real name is CustomerService.Customer
     /// </summary>
-    private class Customer {
+    public class Customer {
         public Customer(string name, string accountId, string problem) {
             Name = name;
             AccountId = accountId;
