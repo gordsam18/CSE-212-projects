@@ -12,7 +12,7 @@ Basketball.Run();
 UniqueLettersSolution.Run();
 
 // Console.WriteLine("\n======================\nDisplay Sums\n======================");
-// DisplaySumsSolution.Run();
+DisplaySumsSolution.Run();
 
 // Console.WriteLine("\n======================\nBasketball\n======================");
-// BasketballSolution.Run();
+BasketballSolution.Run();
