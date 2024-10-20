@@ -14,8 +14,14 @@ public static class Recursion
     /// </summary>
     public static int SumSquaresRecursive(int n)
     {
-        // TODO Start Problem 1
-        return 0;
+        if (n <= 0)
+        {
+            return 0;
+        }
+        else
+        {
+            return n * n + SumSquaresRecursive(n - 1);
+        }
     }
 
     /// <summary>
@@ -39,7 +45,20 @@ public static class Recursion
     /// </summary>
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
-        // TODO Start Problem 2
+        
+        if (word.Length == size)
+        {
+            results.Add(word);
+            return ; 
+        }
+        else
+        {
+            for (var i = 0; i < letters.Length; i++)
+            {
+                
+                PermutationsChoose(results, letters.Remove(i, 1), size, word + letters[i]);
+            }
+        }
     }
 
     /// <summary>
@@ -86,6 +105,9 @@ public static class Recursion
     /// </summary>
     public static decimal CountWaysToClimb(int s, Dictionary<int, decimal>? remember = null)
     {
+        if (remember == null)
+            remember = new Dictionary<int, decimal>();
+
         // Base Cases
         if (s == 0)
             return 0;
@@ -95,12 +117,18 @@ public static class Recursion
             return 2;
         if (s == 3)
             return 4;
-
-        // TODO Start Problem 3
+        
+        if (remember.ContainsKey(s))
+            return remember[s];
 
         // Solve using recursion
-        decimal ways = CountWaysToClimb(s - 1) + CountWaysToClimb(s - 2) + CountWaysToClimb(s - 3);
+        decimal ways = CountWaysToClimb(s - 1, remember) + 
+                       CountWaysToClimb(s - 2, remember) + 
+                       CountWaysToClimb(s - 3, remember);
+
+        remember[s] = ways;
         return ways;
+
     }
 
     /// <summary>
@@ -118,7 +146,18 @@ public static class Recursion
     /// </summary>
     public static void WildcardBinary(string pattern, List<string> results)
     {
-        // TODO Start Problem 4
+        int WildCard = pattern.IndexOf("*");
+
+        if ( WildCard == -1)
+        {
+            results.Add(pattern);
+            return;
+        }
+        else
+        {
+            WildcardBinary(pattern.Substring(0, WildCard) + "0" + pattern.Substring(WildCard + 1), results);
+            WildcardBinary(pattern.Substring(0, WildCard) + "1" + pattern.Substring(WildCard + 1), results);
+        }
     }
 
     /// <summary>
